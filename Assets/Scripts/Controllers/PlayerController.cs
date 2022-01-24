@@ -11,9 +11,9 @@ namespace Controllers
 
         public float movementSpeed = 5f;
 
-        public bool gameStarted = false;
+        [SerializeField] private bool _canMove = false;
 
-        public Animator animator;
+        private Animator _animator;
 
         // [HideInInspector] public RagdollController ragdollController;
 
@@ -28,44 +28,49 @@ namespace Controllers
                 Destroy(gameObject);
             }
 
-            animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
             // ragdollController = GetComponentInChildren<RagdollController>();
         }
 
         private void Start()
         {
             GameManager.Instance.LevelStart += LevelStarted;
-            GameManager.Instance.LevelStart += LevelSuccess;
-            GameManager.Instance.LevelStart += LevelFail;
+            GameManager.Instance.LevelSuccess += LevelSuccess;
+            GameManager.Instance.LevelFail += LevelFail;
         }
 
         private void OnDestroy()
         {
             GameManager.Instance.LevelStart -= LevelStarted;
+            GameManager.Instance.LevelSuccess -= LevelSuccess;
+            GameManager.Instance.LevelFail -= LevelFail;
         }
 
         private void LevelStarted()
         {
-            gameStarted = true;
-            animator.SetBool("CanRun",true);
+            _canMove = true;
+            _animator.SetBool("CanRun", true);
         }
 
         private void LevelSuccess()
         {
+            _canMove = false;
+            _animator.SetBool("Win", true);
         }
 
 
         private void LevelFail()
         {
+            _canMove = false;
+            _animator.SetBool("CanRun", false);
         }
 
         private void FixedUpdate()
         {
-            if (!gameStarted)
+            if (!_canMove)
                 return;
 
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
-            
         }
     }
 }
