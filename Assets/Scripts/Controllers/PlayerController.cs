@@ -11,11 +11,14 @@ namespace Controllers
 
         public float movementSpeed = 5f;
 
-        [SerializeField] private bool _canMove = false;
+        public bool _canMove = false;
 
         private Animator _animator;
 
         // [HideInInspector] public RagdollController ragdollController;
+
+        private SwerveController _swerveController;
+        public SwerveController SwerveController => _swerveController;
 
         private void Awake()
         {
@@ -29,6 +32,7 @@ namespace Controllers
             }
 
             _animator = GetComponent<Animator>();
+            _swerveController = GetComponent<SwerveController>();
             // ragdollController = GetComponentInChildren<RagdollController>();
         }
 

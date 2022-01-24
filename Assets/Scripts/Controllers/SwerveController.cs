@@ -10,7 +10,7 @@ namespace Controllers
         private static Vector3 _moveForce;
         private static bool _onTheEdge = false;
 
-        private bool _canMove;
+        [HideInInspector] public bool canMove;
         private Rigidbody _rigidbody;
 
         private Vector3 _lastMousePos;
@@ -43,17 +43,17 @@ namespace Controllers
         private void LevelStarted()
         {
             _rigidbody.isKinematic = false;
-            _canMove = true;
+            canMove = true;
         }
 
         private void LevelFail()
         {
-            _canMove = false;
+            canMove = false;
         }
 
         private void LevelSuccess()
         {
-            _canMove = false;
+            canMove = false;
         }
 
         private void Update()
@@ -63,7 +63,7 @@ namespace Controllers
 
         private void FixedUpdate()
         {
-            if (!_canMove)
+            if (!canMove)
             {
                 return;
             }
@@ -119,14 +119,14 @@ namespace Controllers
         {
             if (!_onTheEdge)
             {
-                if (transform.position.x > _lastTransform.x && _canMove)
+                if (transform.position.x > _lastTransform.x && canMove)
                 {
                     //right
                     print("Right");
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 18, 0),
                         Time.deltaTime * turnSpeed);
                 }
-                else if (transform.position.x < _lastTransform.x && _canMove)
+                else if (transform.position.x < _lastTransform.x && canMove)
                 {
                     //left
                     print("Left");
