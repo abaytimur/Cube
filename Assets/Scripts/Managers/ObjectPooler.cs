@@ -69,5 +69,25 @@ namespace Managers
 
             return objectToSpawn;
         }
+        public GameObject SpawnPropsFromPool(string tag, Vector3 position, Quaternion rotation, Transform parent)
+        {
+            if (!poolDictionary.ContainsKey(tag))
+                return null;
+
+            GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+
+            objectToSpawn.SetActive(true);
+            objectToSpawn.transform.parent = parent;
+            objectToSpawn.transform.localPosition = position;
+            objectToSpawn.transform.rotation = rotation;
+
+            IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
+            if (pooledObj != null)
+                pooledObj.OnObjectSpawn();
+
+            poolDictionary[tag].Enqueue(objectToSpawn);
+
+            return objectToSpawn;
+        }
     }
 }

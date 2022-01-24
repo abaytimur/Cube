@@ -39,7 +39,7 @@ namespace Logics
             {
                 for (int i = 0; i < confetties.Length; i++)
                 {
-                    yield return new WaitForSeconds(.2f);
+                    yield return new WaitForSeconds(.3f);
 
                     confetties[i].Play(true);
                 }
