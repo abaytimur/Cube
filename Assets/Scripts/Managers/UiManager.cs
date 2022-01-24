@@ -15,6 +15,11 @@ namespace Managers
         [SerializeField] private GameObject failCanvas;
         [SerializeField] private GameObject gameplayCanvas;
         [SerializeField] private GameObject levelNumberText;
+        
+        [SerializeField] private GameObject gameplayGoldCoinBox; 
+        private TextMeshProUGUI _gameplayGoldCoinAmount;
+        [SerializeField] private GameObject playerGoldCoinBox;
+        public TextMeshProUGUI playerGoldCoinAmount;
 
         private void Awake()
         {
@@ -29,6 +34,8 @@ namespace Managers
 
             successCanvas.gameObject.SetActive(false);
             failCanvas.gameObject.SetActive(false);
+            _gameplayGoldCoinAmount = gameplayGoldCoinBox.GetComponentInChildren<TextMeshProUGUI>();
+            playerGoldCoinAmount = playerGoldCoinBox.GetComponentInChildren<TextMeshProUGUI>();
         }
 
         private void Start()
@@ -37,7 +44,11 @@ namespace Managers
             GameManager.Instance.LevelFail += LevelFailed;
             GameManager.Instance.LevelSuccess += LevelSucceeded;
 
+            levelStartCanvas.SetActive(true);
+            gameplayGoldCoinBox.SetActive(false);
+
             levelNumberText.GetComponent<TextMeshProUGUI>().text = $"LEVEL {SceneManager.GetActiveScene().buildIndex + 1}";
+            _gameplayGoldCoinAmount.text = "0";
         }
 
         private void OnDestroy()
@@ -49,7 +60,9 @@ namespace Managers
         
         private void LevelStarted()
         {
-            // levelStartCanvas.SetActive(false);
+            levelStartCanvas.SetActive(false);
+            playerGoldCoinBox.SetActive(false);
+            gameplayGoldCoinBox.SetActive(true);
         }
 
         private void LevelSucceeded()
@@ -70,9 +83,5 @@ namespace Managers
             failCanvas.gameObject.SetActive(true);
         }
 
-        public void RestartLevel()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
     }
 }

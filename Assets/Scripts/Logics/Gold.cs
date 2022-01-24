@@ -1,6 +1,5 @@
 using System;
 using Managers;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using Utilities;
 
@@ -8,10 +7,11 @@ namespace Logics
 {
     public class Gold: MonoBehaviour
     {
+        private GoldData _goldData;
+
         private void Start()
         {
             LoadData();
-            Debug.Log(Application.persistentDataPath);
         }
 
         private void Update()
@@ -21,8 +21,6 @@ namespace Logics
                 AddGold(+45);
             }
         }
-
-        private GoldData _goldData;
 
         public void AddGold(int amount)
         {
@@ -43,7 +41,8 @@ namespace Logics
             _goldData = SaveManager.LoadData<GoldData>("gold");
             if (_goldData == null)
                 _goldData = new GoldData();
-            
+
+            UiManager.Instance.playerGoldCoinAmount.text = $"{_goldData.amount}";
             // todo: panelde goster
             
             Debug.Log($"Loaded gold amount: {_goldData.amount}");
