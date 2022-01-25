@@ -34,6 +34,7 @@ namespace Logics
             {
                 _healthData.amount = 0;
             }
+            print("Health.cs, health.data: "+ _healthData.amount);
             // todo: panelde goster
         }
 
@@ -58,7 +59,7 @@ namespace Logics
                 _healthData.amount = 3;
             }
 
-            UiManager.Instance.HealthSpawner.SpawnHearths(_healthData.amount);
+            UiManager.Instance.HearthSpawner.SpawnHearths(_healthData.amount);
             Debug.Log($"Loaded health amount: {_healthData.amount}");
         }
 

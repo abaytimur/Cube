@@ -10,9 +10,9 @@ namespace Logics.Props
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                print("xxdddxd");
-                // todo: health
-                UiManager.Instance.HealthSpawner.DecreaseHearths();
+                print("obstacle collided");
+                
+                UiManager.Instance.HearthSpawner.DecreaseHearths();
             }
         }
     }

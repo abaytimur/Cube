@@ -24,8 +24,8 @@ namespace Managers
         [SerializeField] private GameObject playerGoldCoinBox;
         public TextMeshProUGUI playerGoldCoinAmount;
 
-       [SerializeField] private HealthSpawner _healthSpawner;
-        public HealthSpawner HealthSpawner => _healthSpawner;
+       [SerializeField] private HearthSpawner hearthSpawner;
+        public HearthSpawner HearthSpawner => hearthSpawner;
 
         private void Awake()
         {

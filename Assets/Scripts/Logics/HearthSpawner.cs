@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Logics
 {
-    public class HealthSpawner : MonoBehaviour
+    public class HearthSpawner : MonoBehaviour
     {
         [SerializeField] private GameObject[] hearths;
         private List<GameObject> _sharedHearths = new List<GameObject>();
@@ -37,10 +37,12 @@ namespace Logics
         public void DecreaseHearths()
         {
             _health.RemoveHealth();
-            GameObject temporaryObject =  _sharedHearths.LastOrDefault();
-            if (temporaryObject != null) temporaryObject.SetActive(false);
-
-            _sharedHearths.Remove(temporaryObject);
+            var temporaryObject = _sharedHearths.LastOrDefault()?.gameObject;
+            if (temporaryObject != null)
+            {
+                temporaryObject.SetActive(false);
+                _sharedHearths.Remove(temporaryObject);
+            }
         }
     }
 }
