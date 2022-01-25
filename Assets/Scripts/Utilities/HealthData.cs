@@ -4,5 +4,6 @@ namespace Utilities
     public class HealthData
     {
         public int amount;
+        public int maxHealth;
     }
 }

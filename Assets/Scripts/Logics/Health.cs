@@ -23,7 +23,12 @@ namespace Logics
 
         public void AddHealth()
         {
-            _healthData.amount++;
+            _healthData.maxHealth++;
+            if (_healthData.maxHealth >=7)
+            {
+                // 7 is max health
+                _healthData.maxHealth = 7;
+            }
             // todo: panelde goster
         }
         
@@ -38,11 +43,13 @@ namespace Logics
             // todo: panelde goster
         }
 
+
         private void SaveData()
         {
             SaveManager.SaveData(_healthData, "health");
 
             Debug.Log($"Saved health amount: {_healthData.amount}");
+            Debug.Log($"Saved maxHealth amount: {_healthData.maxHealth}");
         }
 
         private void LoadData()
@@ -51,12 +58,13 @@ namespace Logics
             if (_healthData == null)
             {
                 _healthData = new HealthData();
-                _healthData.amount = 3;
+                _healthData.maxHealth = 3;
+                _healthData.amount = _healthData.maxHealth;
             }
-
-            if (_healthData.amount<= 3)
+            else
             {
-                _healthData.amount = 3;
+                _healthData.amount = _healthData.maxHealth;
+
             }
 
             UiManager.Instance.HearthSpawner.SpawnHearths(_healthData.amount);

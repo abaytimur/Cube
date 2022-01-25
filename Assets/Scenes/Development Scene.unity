@@ -625,6 +625,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
+--- !u!137 &331508265 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4654188430590309208, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
+  m_PrefabInstance: {fileID: 290944634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &457810681 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2870053916168865277, guid: 6162197fcee1145138c20b41d3d526b4, type: 3}
@@ -1353,6 +1358,11 @@ MonoBehaviour:
   smoothSpeed: 0.125
   smoothTime: 0.3
   offset: {x: 0, y: 5, z: -8}
+--- !u!137 &890443341 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2358694406979785087, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
+  m_PrefabInstance: {fileID: 290944634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &910992870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2473,6 +2483,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2870053916168865277, guid: 6162197fcee1145138c20b41d3d526b4, type: 3}
   m_PrefabInstance: {fileID: 1588896116}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1674497293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1802322092809583602, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
+  m_PrefabInstance: {fileID: 290944634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1674497294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674497293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6262de73e5774450392383091d94b993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderSlowDownEffectMaterial: {fileID: 2100000, guid: cf34fbc93777046529794b924638026e, type: 2}
+  shaderMaterialSocket:
+  - {fileID: 890443341}
+  - {fileID: 331508265}
 --- !u!1001 &1691476468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2744,9 +2775,6 @@ MonoBehaviour:
   - tag: Diamond Pay2
     prefab: {fileID: 7734356194213627269, guid: 487f6c5f48df64a04b99623a533fc975, type: 3}
     size: 30
-  - tag: Hearth
-    prefab: {fileID: 8217096106904921222, guid: 6162197fcee1145138c20b41d3d526b4, type: 3}
-    size: 10
 --- !u!4 &1748949055
 Transform:
   m_ObjectHideFlags: 0
@@ -2950,7 +2978,7 @@ MonoBehaviour:
   gameplayGoldCoinBox: {fileID: 759105614}
   playerGoldCoinBox: {fileID: 673108367}
   playerGoldCoinAmount: {fileID: 208462820}
-  _healthSpawner: {fileID: 1095520367}
+  hearthSpawner: {fileID: 1095520367}
 --- !u!1 &1897951719
 GameObject:
   m_ObjectHideFlags: 0
