@@ -76,7 +76,7 @@ namespace Logics
         {
             if (Random.Range(0,1f)<.5f)
             {
-                ObjectPooler.Instance.SpawnPropsFromPool(Extensions.DiamondName, new Vector3(
+                var temporaryObject = ObjectPooler.Instance.SpawnPropsFromPool(Extensions.DiamondName, new Vector3(
                         Random.Range(-Extensions.ObstacleXOffset, Extensions.ObstacleXOffset),
                         .75f,
                         Random.Range(Extensions.ObstacleZMinOffset, Extensions.ObstacleZMaxOffset)),

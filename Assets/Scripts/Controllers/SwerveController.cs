@@ -19,7 +19,7 @@ namespace Controllers
         [SerializeField] private float sensitivity = 0.16f, clampDelta = 42f;
         [SerializeField] private float turnSpeed = 15;
         [SerializeField] private float maxX = 3.7f;
-
+        private Vector3 _direction;
 
         void Awake()
         {
@@ -58,7 +58,12 @@ namespace Controllers
 
         private void Update()
         {
-            TurnThePlayer();
+            if (Input.GetMouseButtonUp(0))
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+
+            // TurnThePlayer();
         }
 
         private void FixedUpdate()
@@ -76,11 +81,11 @@ namespace Controllers
 
             if (Input.GetMouseButton(0))
             {
-                Vector3 direction = _lastMousePos - Input.mousePosition;
+                _direction = _lastMousePos - Input.mousePosition;
                 _lastMousePos = Input.mousePosition;
                 _lastTransform = transform.position;
-                direction = new Vector3(direction.x, 0, 0);
-                _moveForce = Vector3.ClampMagnitude(direction, clampDelta);
+                _direction = new Vector3(_direction.x, 0, 0);
+                _moveForce = Vector3.ClampMagnitude(_direction, clampDelta);
 
                 if (transform.position.x >= maxX)
                 {
@@ -113,6 +118,8 @@ namespace Controllers
                         ForceMode.VelocityChange);
                 }
             }
+
+         
         }
 
         void TurnThePlayer()

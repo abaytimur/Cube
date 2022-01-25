@@ -1,4 +1,5 @@
 using System.Collections;
+using Logics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,7 @@ namespace Managers
 {
     public class UiManager : MonoBehaviour
     {
-       private static UiManager _instance;
+        private static UiManager _instance;
         public static UiManager Instance => _instance;
 
         [SerializeField] private GameObject levelStartCanvas;
@@ -15,11 +16,16 @@ namespace Managers
         [SerializeField] private GameObject failCanvas;
         [SerializeField] private GameObject gameplayCanvas;
         [SerializeField] private GameObject levelNumberText;
-        
-        [SerializeField] private GameObject gameplayGoldCoinBox; 
+
+        [SerializeField] private GameObject gameplayGoldCoinBox;
         private TextMeshProUGUI _gameplayGoldCoinAmount;
+        public TextMeshProUGUI GameplayGoldCoinAmount => _gameplayGoldCoinAmount;
+
         [SerializeField] private GameObject playerGoldCoinBox;
         public TextMeshProUGUI playerGoldCoinAmount;
+
+       [SerializeField] private HealthSpawner _healthSpawner;
+        public HealthSpawner HealthSpawner => _healthSpawner;
 
         private void Awake()
         {
@@ -47,7 +53,8 @@ namespace Managers
             levelStartCanvas.SetActive(true);
             gameplayGoldCoinBox.SetActive(false);
 
-            levelNumberText.GetComponent<TextMeshProUGUI>().text = $"LEVEL {SceneManager.GetActiveScene().buildIndex + 1}";
+            levelNumberText.GetComponent<TextMeshProUGUI>().text =
+                $"LEVEL {SceneManager.GetActiveScene().buildIndex + 1}";
             _gameplayGoldCoinAmount.text = "0";
         }
 
@@ -57,7 +64,7 @@ namespace Managers
             GameManager.Instance.LevelFail -= LevelFailed;
             GameManager.Instance.LevelSuccess -= LevelSucceeded;
         }
-        
+
         private void LevelStarted()
         {
             levelStartCanvas.SetActive(false);
@@ -82,6 +89,5 @@ namespace Managers
             gameplayCanvas.gameObject.SetActive(false);
             failCanvas.gameObject.SetActive(true);
         }
-
     }
 }
