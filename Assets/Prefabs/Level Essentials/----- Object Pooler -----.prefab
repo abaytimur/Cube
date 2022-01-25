@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2103367968075475608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2103367968075475610}
+  - component: {fileID: 2103367968075475611}
+  m_Layer: 0
+  m_Name: ----- Object Pooler -----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2103367968075475610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103367968075475608}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103367968075475611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103367968075475608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd636e1b81445fa9979cbfebbec8ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Road
+    prefab: {fileID: 8557397787472901764, guid: c7b95052619c440e2ba1fb21304de873, type: 3}
+    size: 20
+  - tag: End Road
+    prefab: {fileID: 8557397787472901764, guid: 627a50e64a8b84fceb0aef73d8133711, type: 3}
+    size: 1
+  - tag: Obstacle
+    prefab: {fileID: 976760069073754666, guid: 42b1c5512ef054d7abb3bf158acff6e5, type: 3}
+    size: 30
+  - tag: Diamond
+    prefab: {fileID: 5619500201809990054, guid: 6bdf9b2ae2eda4b0889a8abce6728907, type: 3}
+    size: 30
+  - tag: Diamond Alternative
+    prefab: {fileID: 7734356194213627269, guid: a8fdc7374c920492ab56c46477ebe232, type: 3}
+    size: 30
+  - tag: Diamond Pay
+    prefab: {fileID: 5619500201809990054, guid: b39c86ec82b0b4339ad6d7f5edc38890, type: 3}
+    size: 30
+  - tag: Diamond Alternative Pay
+    prefab: {fileID: 7734356194213627269, guid: 487f6c5f48df64a04b99623a533fc975, type: 3}
+    size: 30

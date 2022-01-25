@@ -10,8 +10,8 @@ namespace Controllers
         private static RoadController _instance;
         public static RoadController Instance => _instance;
 
-        public int InitialRoadCount { get; private set; } = 5;
-        [SerializeField] private int totalRoadCount = 10;
+        public int InitialRoadCount { get; private set; } = 15;
+        [SerializeField] private int totalRoadCount = 20;
         public int TotalRoadCount => totalRoadCount;
 
         private List<GameObject> _roadList = new List<GameObject>();

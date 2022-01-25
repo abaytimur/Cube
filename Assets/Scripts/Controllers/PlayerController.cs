@@ -65,6 +65,7 @@ namespace Controllers
         private void LevelSuccess()
         {
             _canMove = false;
+            Animator.applyRootMotion = true;
             _animator.SetBool("Win", true);
         }
 

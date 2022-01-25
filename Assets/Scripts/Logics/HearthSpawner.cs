@@ -12,7 +12,7 @@ namespace Logics
     {
         [SerializeField] private GameObject[] hearths;
         private List<GameObject> _sharedHearths = new List<GameObject>();
-        public List<GameObject> SharedHearths => _sharedHearths;
+        public List<GameObject> SharedHearth => _sharedHearths;
         private Health _health;
 
         private void Awake()
@@ -65,6 +65,14 @@ namespace Logics
 
         public void DecreaseHearths()
         {
+            _sharedHearths.Clear();
+            foreach (var item in hearths)
+            {
+                if (item.gameObject.activeInHierarchy)
+                {
+                    _sharedHearths.Add(item);
+                }
+            }
             _health.RemoveHealth();
             var temporaryObject = _sharedHearths.LastOrDefault()?.gameObject;
             if (temporaryObject != null)

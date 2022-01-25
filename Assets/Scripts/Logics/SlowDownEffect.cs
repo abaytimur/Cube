@@ -19,8 +19,6 @@ namespace Logics
             {
                 _initialMaterial = shaderMaterialSocket[i].material;
             }
-            
-
         }
 
         public void PlaySlowDownEffect()

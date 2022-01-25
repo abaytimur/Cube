@@ -12,9 +12,17 @@ namespace Logics.Props
         private float _slowDuration = 1f;
         private Camera _camera;
 
+        private float _initialCharacterMovementSpeed;
+        private float _halvedCharacterMovementSpeed;
         private void Awake()
         {
             _camera = Camera.main;
+        }
+
+        private void Start()
+        {
+            _initialCharacterMovementSpeed = PlayerController.Instance.movementSpeed;
+            _halvedCharacterMovementSpeed = PlayerController.Instance.movementSpeed*2 / 3;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -32,22 +40,22 @@ namespace Logics.Props
             InvokeRepeating(nameof(FovMinusChange),0,.02f);
 
             characterObject.GetComponent<SlowDownEffect>().PlaySlowDownEffect();
-            _slowDuration = Random.Range(1.5f, 2.5f);
+            _slowDuration = Random.Range(1f, 2f);
 
-            characterObject.movementSpeed = 3f;
+            characterObject.movementSpeed = _halvedCharacterMovementSpeed;
 
             yield return new WaitForSeconds(_slowDuration);
             InvokeRepeating(nameof(FovPlusChange),0,.02f);
 
             characterObject.GetComponent<SlowDownEffect>().StopSlowDownEffect();
-            characterObject.movementSpeed = 5f;
+            characterObject.movementSpeed = _initialCharacterMovementSpeed;
             characterObject.GetComponent<Animator>().speed = 1;
 
         }
 
         private void FovMinusChange()
         {
-            if (_camera.fieldOfView<= 28f)
+            if (_camera.fieldOfView<= 22.5f)
             {
                 CancelInvoke(nameof(FovMinusChange));
             }
@@ -56,7 +64,7 @@ namespace Logics.Props
         }
         private void FovPlusChange()
         {
-            if (_camera.fieldOfView>= 30f)
+            if (_camera.fieldOfView>= 25f)
             {
                 CancelInvoke(nameof(FovPlusChange));
             }
