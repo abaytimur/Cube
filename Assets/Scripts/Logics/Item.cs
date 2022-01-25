@@ -32,7 +32,7 @@ namespace Logics
             transform.position = Vector3.MoveTowards(transform.position, target, 20 * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(targetRotation),
                 20 * Time.deltaTime);
-            // transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one * 0.6f, 20 * Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one * 0.6f, 20 * Time.deltaTime);
 
             if (transform.position == target)
             {
@@ -49,7 +49,8 @@ namespace Logics
 
         private IEnumerator DelayedMove()
         {
-            yield return new WaitForSeconds(Random.Range(.7f, 1f));
+            yield return null;
+            // yield return new WaitForSeconds(Random.Range(.7f, 1f));
             Move();
         }
 

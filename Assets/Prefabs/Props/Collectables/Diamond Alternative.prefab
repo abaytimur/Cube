@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5363782360114173440}
   - component: {fileID: 6443040182928198554}
   - component: {fileID: 6054956636133177068}
+  - component: {fileID: 2491336685844603128}
+  - component: {fileID: 7675954060801659820}
   m_Layer: 0
   m_Name: Diamond5side
   m_TagString: Untagged
@@ -81,6 +83,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2491336685844603128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650334597466692763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48118803, y: 0.49706, z: 0.48760203}
+  m_Center: {x: -0.0000006556511, y: -0.072876394, z: 0.0000005364418}
+--- !u!114 &7675954060801659820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650334597466692763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b615165914d145efa3852c0cc2dd3751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diamondShape: 1
 --- !u!1 &7734356194213627269
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +118,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7734356194213861797}
-  - component: {fileID: 1738115452056038048}
+  - component: {fileID: 1190642103983153445}
+  - component: {fileID: 8828037885831957762}
   m_Layer: 10
-  m_Name: DiamondPay2
+  m_Name: Diamond Alternative
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,16 +142,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1738115452056038048
-MonoBehaviour:
+--- !u!65 &1190642103983153445
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7734356194213627269}
+  m_Material: {fileID: 13400000, guid: 208cce11cc5dc4098a93457080bdb630, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a7ea8c074eb48879d2194a0d8827d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRotation: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.48928162, y: 1.808136, z: 0.491648}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8828037885831957762
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7734356194213627269}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0

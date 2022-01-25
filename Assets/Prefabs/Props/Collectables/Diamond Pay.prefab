@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5619500201809628550}
   - component: {fileID: 7547120247787597237}
   m_Layer: 10
-  m_Name: DiamondPay
+  m_Name: Diamond Pay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

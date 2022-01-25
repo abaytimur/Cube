@@ -654,6 +654,10 @@ PrefabInstance:
       propertyPath: ragdollController
       value: 
       objectReference: {fileID: 290944635}
+    - target: {fileID: 1620115115, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
+      propertyPath: childRotationObject
+      value: 
+      objectReference: {fileID: 628397595}
     - target: {fileID: 1317569833599017288, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -709,7 +713,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9052632640065576206, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
   m_PrefabInstance: {fileID: 290944634}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 628397595}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f86633189d3424107bf2b4e2b0de6c3c, type: 3}
@@ -1311,6 +1315,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2870053916168865277, guid: 6162197fcee1145138c20b41d3d526b4, type: 3}
   m_PrefabInstance: {fileID: 605742389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &628397595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4202972740688788180, guid: 7c8f2d0c127494f1d83455e8bf47d47f, type: 3}
+  m_PrefabInstance: {fileID: 290944634}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &630846268
 GameObject:

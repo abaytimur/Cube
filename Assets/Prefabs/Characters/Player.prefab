@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   _canMove: 0
+  ragdollController: {fileID: 9052632640065576206}
 --- !u!136 &1121502485196268905
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -521,6 +522,7 @@ MonoBehaviour:
   clampDelta: 42
   turnSpeed: 15
   maxX: 3.7
+  childRotationObject: {fileID: 4202972740688788180}
 --- !u!114 &1674497294
 MonoBehaviour:
   m_ObjectHideFlags: 0
