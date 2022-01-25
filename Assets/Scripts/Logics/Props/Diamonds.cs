@@ -35,7 +35,7 @@ namespace Logics.Props
 
         private IEnumerator DelayedSpawnDiamondPay()
         {
-            yield return new WaitForSeconds(.4f);
+            yield return new WaitForSeconds(.3f);
 
             var temporaryObject =
                 ObjectPooler.Instance.SpawnFromPool(Extensions.DiamondPayName, transform.position, quaternion.identity);

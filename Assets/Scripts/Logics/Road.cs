@@ -45,14 +45,16 @@ namespace Logics
 
         private void SpawnNextRoad()
         {
-            RoadController.Instance.RoadList.Add(ObjectPooler.Instance.SpawnFromPool(Extensions.RoadName,
+            var tempObj = ObjectPooler.Instance.SpawnFromPool(Extensions.RoadName,
                 transform.position + Vector3.forward *
-                (Extensions.RoadOffset * RoadController.Instance.InitialRoadCount), Quaternion.identity));
+                (Extensions.RoadOffset * RoadController.Instance.InitialRoadCount), Quaternion.identity);
+            RoadController.Instance.RoadList.Add(tempObj);
+            tempObj.GetComponent<Road>().SpawnRandomProps();
         }
 
         private void SpawnRandomProps()
         {
-            if (Random.Range(0, 1f) <= .6f)
+            if (Random.Range(0, 1f) <= 0.6f)
             {
                 SpawnDiamonds();
             }
@@ -64,17 +66,20 @@ namespace Logics
 
         private void SpawnObstacles()
         {
-            ObjectPooler.Instance.SpawnPropsFromPool(Extensions.ObstacleName, new Vector3(
+           var tempObject = ObjectPooler.Instance.SpawnPropsFromPool(Extensions.ObstacleName, new Vector3(
                     Random.Range(-Extensions.ObstacleXOffset, Extensions.ObstacleXOffset),
                     0,
                     Random.Range(Extensions.ObstacleZMinOffset, Extensions.ObstacleZMaxOffset)),
                 Quaternion.Euler(0, 90, 0),
                 propSpawnTransform);
+
+           tempObject.transform.parent = null;
         }
 
         private void SpawnDiamonds()
         {
-            if (Random.Range(0,1f)<.5f)
+            var randomNumber = Random.Range(0, 10f);
+            if (randomNumber< 5f)
             {
                 var temporaryObject = ObjectPooler.Instance.SpawnPropsFromPool(Extensions.DiamondName, new Vector3(
                         Random.Range(-Extensions.ObstacleXOffset, Extensions.ObstacleXOffset),
@@ -82,15 +87,18 @@ namespace Logics
                         Random.Range(Extensions.ObstacleZMinOffset, Extensions.ObstacleZMaxOffset)),
                     Quaternion.Euler(0, 90, 0),
                     propSpawnTransform);
+                temporaryObject.transform.parent = null;
             }
             else
             {
-                ObjectPooler.Instance.SpawnPropsFromPool(Extensions.DiamondAlternativeName, new Vector3(
+                var temporaryObject = ObjectPooler.Instance.SpawnPropsFromPool(Extensions.DiamondAlternativeName, new Vector3(
                         Random.Range(-Extensions.ObstacleXOffset, Extensions.ObstacleXOffset),
                         .75f,
                         Random.Range(Extensions.ObstacleZMinOffset, Extensions.ObstacleZMaxOffset)),
                     Quaternion.Euler(0, 90, 0),
                     propSpawnTransform);
+                temporaryObject.transform.parent = null;
+
             }
         }
     }
