@@ -1,4 +1,5 @@
 using System.Collections;
+using Logics;
 using Managers;
 using UnityEngine;
 
@@ -14,12 +15,14 @@ namespace Controllers
         public bool _canMove = false;
 
         private Animator _animator;
-
+        public Animator Animator => _animator;
         // [HideInInspector] public RagdollController ragdollController;
 
         private SwerveController _swerveController;
         public SwerveController SwerveController => _swerveController;
-
+        private Gold _gold;
+        public Gold Gold => _gold;
+        
         private void Awake()
         {
             if (_instance == null)
@@ -33,6 +36,7 @@ namespace Controllers
 
             _animator = GetComponent<Animator>();
             _swerveController = GetComponent<SwerveController>();
+            _gold = GetComponent<Gold>();
             // ragdollController = GetComponentInChildren<RagdollController>();
         }
 

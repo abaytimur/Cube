@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Controllers;
 using Logics;
 using TMPro;
 using UnityEngine;
@@ -74,18 +76,37 @@ namespace Managers
 
         private void LevelSucceeded()
         {
-            gameplayCanvas.gameObject.SetActive(false);
+            gameplayCanvas.gameObject.SetActive(true);
+            playerGoldCoinBox.SetActive(true);
             StartCoroutine(DelayedSuccess());
         }
 
         private IEnumerator DelayedSuccess()
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(3f);
             successCanvas.gameObject.SetActive(true);
+            CollectGameplayCoin();
+        }
+
+        private void CollectGameplayCoin()
+        {
+            int temporaryCoinAmount = Convert.ToInt32(_gameplayGoldCoinAmount.text);
+            if (temporaryCoinAmount > 0)
+            {
+                // adding gameplay coins to player coins
+                PlayerController.Instance.Gold.AddGold(temporaryCoinAmount);
+                _gameplayGoldCoinAmount.text = "0";
+            }
         }
 
         private void LevelFailed()
         {
+            StartCoroutine(DelayedFail());
+        }
+
+        private IEnumerator DelayedFail()
+        {
+            yield return new WaitForSeconds(3f);
             gameplayCanvas.gameObject.SetActive(false);
             failCanvas.gameObject.SetActive(true);
         }

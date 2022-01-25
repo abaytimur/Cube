@@ -1,3 +1,4 @@
+using Controllers;
 using Managers;
 using UnityEngine;
 using Utilities;
@@ -7,29 +8,23 @@ namespace Logics
     public class Health : MonoBehaviour
     {
         private HealthData _healthData;
-
+        [SerializeField] private int healthBuyCost;
+        
         private void Start()
         {
+            GameManager.Instance.LevelRestart += LevelRestart;
             LoadData();
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                AddHealth();
-            }
         }
 
         public void AddHealth()
         {
-            _healthData.maxHealth++;
-            if (_healthData.maxHealth >=7)
+            if (PlayerController.Instance.Gold.GoldData.amount >= healthBuyCost && _healthData.maxHealth < 7)
             {
-                // 7 is max health
-                _healthData.maxHealth = 7;
+                PlayerController.Instance.Gold.RemoveGold(healthBuyCost);
+                
+                _healthData.maxHealth++;
+                UiManager.Instance.HearthSpawner.SpawnHearths(_healthData.amount);
             }
-            // todo: panelde goster
         }
         
         public void RemoveHealth()
@@ -38,6 +33,8 @@ namespace Logics
             if (_healthData.amount<=0)
             {
                 _healthData.amount = 0;
+                
+                GameManager.Instance.OnLevelFail();
             }
             print("Health.cs, health.data: "+ _healthData.amount);
             // todo: panelde goster
@@ -71,6 +68,12 @@ namespace Logics
             Debug.Log($"Loaded health amount: {_healthData.amount}");
         }
 
+        
+        private void LevelRestart()
+        {
+            SaveData();
+        }
+        
         private void OnApplicationQuit()
         {
             SaveData();

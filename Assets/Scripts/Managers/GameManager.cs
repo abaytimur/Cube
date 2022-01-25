@@ -1,4 +1,5 @@
 using System;
+using Logics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ namespace Managers
         public event Action LevelStart;
         public event Action LevelFail;
         public event Action LevelSuccess;
+        public event Action LevelRestart;
 
 
         private static GameManager _instance;
@@ -56,7 +58,20 @@ namespace Managers
         
         public void RestartLevel()
         {
+            OnLevelRestart();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void NextLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        }
+
+        protected virtual void OnLevelRestart()
+        {
+            print("Level Restart");
+            
+            LevelRestart?.Invoke();
         }
     }
 }

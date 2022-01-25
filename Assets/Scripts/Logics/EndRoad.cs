@@ -24,12 +24,10 @@ namespace Logics
             
             PlayerController.Instance._canMove = false;
             PlayerController.Instance.SwerveController.canMove = false;
+            PlayerController.Instance.Animator.SetBool("Win", true);
             
-            yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1f);
 
-            // TODO: 
-            // play win animation
-           
             PlayerController.Instance.movementSpeed = 0;
         }
 

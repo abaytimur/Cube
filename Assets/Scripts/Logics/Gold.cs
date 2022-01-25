@@ -5,35 +5,37 @@ using Utilities;
 
 namespace Logics
 {
-    public class Gold: MonoBehaviour
+    public class Gold : MonoBehaviour
     {
         private GoldData _goldData;
+        public GoldData GoldData => _goldData;
 
         private void Start()
         {
+            GameManager.Instance.LevelRestart += LevelRestart;
             LoadData();
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                AddGold(+45);
-            }
-        }
-
+        
         public void AddGold(int amount)
         {
             _goldData.amount += amount;
-            // todo: panelde goster
+
+            UiManager.Instance.playerGoldCoinAmount.text = $"{_goldData.amount}";
+            print("New gold amount: " + _goldData.amount);
         }
-        
+
+        public void RemoveGold(int amount)
+        {
+            _goldData.amount -= amount;
+
+            UiManager.Instance.playerGoldCoinAmount.text = $"{_goldData.amount}";
+        }
+
         private void SaveData()
         {
             SaveManager.SaveData(_goldData, "gold");
-            
-            Debug.Log($"Saved gold amount: {_goldData.amount}");
 
+            Debug.Log($"Saved gold amount: {_goldData.amount}");
         }
 
         private void LoadData()
@@ -43,9 +45,14 @@ namespace Logics
                 _goldData = new GoldData();
 
             UiManager.Instance.playerGoldCoinAmount.text = $"{_goldData.amount}";
-            // todo: panelde goster
-            
+
             Debug.Log($"Loaded gold amount: {_goldData.amount}");
+        }
+
+
+        private void LevelRestart()
+        {
+            SaveData();
         }
 
         private void OnApplicationQuit()

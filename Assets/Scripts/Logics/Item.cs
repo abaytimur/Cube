@@ -49,7 +49,7 @@ namespace Logics
 
         private IEnumerator DelayedMove()
         {
-            yield return new WaitForSeconds(Random.Range(.7f, 1.2f));
+            yield return new WaitForSeconds(Random.Range(.7f, 1f));
             Move();
         }
 
