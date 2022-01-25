@@ -34,6 +34,35 @@ namespace Logics
             }
         }
 
+        public void SuccessPanelHearths()
+        {
+            for (int i = 0; i < hearths.Length; i++)
+            {
+                hearths[i].SetActive(false);
+                _sharedHearths.Clear();
+            }
+
+            for (int i = 0; i < _health.HealthData.maxHealth; i++)
+            {
+                _sharedHearths.Add(hearths[i]);
+                hearths[i].SetActive(true);
+            }
+        }
+
+        public void OpenNewHearthImage()
+        {
+            for (int i = 0; i < hearths.Length; i++)
+            {
+                if (hearths[i] == _sharedHearths.LastOrDefault())
+                {
+                    if (hearths[i+1] != null)
+                    {
+                        hearths[i + 1].SetActive(true);
+                    }
+                }
+            }
+        }
+
         public void DecreaseHearths()
         {
             _health.RemoveHealth();

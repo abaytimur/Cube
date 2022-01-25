@@ -8,6 +8,8 @@ namespace Logics
     public class Health : MonoBehaviour
     {
         private HealthData _healthData;
+        public HealthData HealthData => _healthData;
+        
         [SerializeField] private int healthBuyCost;
         
         private void Start()
@@ -23,7 +25,9 @@ namespace Logics
                 PlayerController.Instance.Gold.RemoveGold(healthBuyCost);
                 
                 _healthData.maxHealth++;
-                UiManager.Instance.HearthSpawner.SpawnHearths(_healthData.amount);
+                UiManager.Instance.HearthSpawner.OpenNewHearthImage();
+                
+                // UiManager.Instance.HearthSpawner.SpawnHearths(_healthData.amount);
             }
         }
         

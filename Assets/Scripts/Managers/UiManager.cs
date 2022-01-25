@@ -84,6 +84,8 @@ namespace Managers
         private IEnumerator DelayedSuccess()
         {
             yield return new WaitForSeconds(3f);
+            HearthSpawner.SuccessPanelHearths();
+            
             successCanvas.gameObject.SetActive(true);
             CollectGameplayCoin();
         }
