@@ -34,6 +34,7 @@ namespace Logics
             {
                 _healthData.amount = 0;
                 
+                PlayerController.Instance.RagdollController.Die();
                 GameManager.Instance.OnLevelFail();
             }
             print("Health.cs, health.data: "+ _healthData.amount);

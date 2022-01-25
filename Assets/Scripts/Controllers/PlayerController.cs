@@ -16,10 +16,13 @@ namespace Controllers
 
         private Animator _animator;
         public Animator Animator => _animator;
-        // [HideInInspector] public RagdollController ragdollController;
+        
+        [SerializeField] private RagdollController ragdollController;
+        public RagdollController RagdollController => ragdollController;
 
         private SwerveController _swerveController;
         public SwerveController SwerveController => _swerveController;
+       
         private Gold _gold;
         public Gold Gold => _gold;
         
@@ -37,7 +40,6 @@ namespace Controllers
             _animator = GetComponent<Animator>();
             _swerveController = GetComponent<SwerveController>();
             _gold = GetComponent<Gold>();
-            // ragdollController = GetComponentInChildren<RagdollController>();
         }
 
         private void Start()

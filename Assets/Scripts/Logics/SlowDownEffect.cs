@@ -11,6 +11,7 @@ namespace Logics
         private Material _initialMaterial;
 
         private bool _slowDown;
+
         
         private void Awake()
         {
@@ -18,6 +19,8 @@ namespace Logics
             {
                 _initialMaterial = shaderMaterialSocket[i].material;
             }
+            
+
         }
 
         public void PlaySlowDownEffect()
