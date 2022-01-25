@@ -21,6 +21,8 @@ namespace Controllers
         [SerializeField] private float maxX = 3.7f;
         private Vector3 _direction;
 
+        [SerializeField] private GameObject childRotationObject;
+
         void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -56,14 +58,6 @@ namespace Controllers
         {
             canMove = false;
             _rigidbody.isKinematic = true;
-
-        }
-
-        private void Update()
-        {
-            // todo bunu ac ve karakterin rotasyonunu ileri cevir mouse upta
-            // TurnThePlayer();
-           
         }
 
         private void FixedUpdate()
@@ -72,6 +66,7 @@ namespace Controllers
             {
                 return;
             }
+            
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -81,6 +76,8 @@ namespace Controllers
 
             if (Input.GetMouseButton(0))
             {
+                TurnThePlayer();
+
                 _direction = _lastMousePos - Input.mousePosition;
                 _lastMousePos = Input.mousePosition;
                 _lastTransform = transform.position;
@@ -111,6 +108,12 @@ namespace Controllers
                         _onTheEdge = false;
                     }
                 }
+                else
+                {
+                    childRotationObject.transform.rotation = Quaternion.Lerp(childRotationObject.transform.rotation,
+                        Quaternion.Euler(0, 0, 0),
+                        Time.deltaTime * turnSpeed);
+                }
 
                 if (!_onTheEdge)
                 {
@@ -122,7 +125,10 @@ namespace Controllers
             if (Input.GetMouseButtonUp(0))
             {
                 _rigidbody.velocity = Vector3.zero;
+               
             }
+            
+
         }
 
         void TurnThePlayer()
@@ -133,35 +139,39 @@ namespace Controllers
                 {
                     //right
                     print("Right");
-                    // characterModel.transform.eulerAngles = Vector3.Lerp(characterModel.transform.eulerAngles, Quaternion.Euler(0, 18, 0),
-                    //     Time.deltaTime * turnSpeed);
-                
+                    childRotationObject.transform.rotation =Quaternion.Lerp(childRotationObject.transform.rotation,
+                        Quaternion.Euler(0, 18, 0),
+                        Time.deltaTime * turnSpeed);
                 }
                 else if (transform.position.x < _lastTransform.x && canMove)
                 {
                     //left
                     print("Left");
-                    // characterModel.transform.rotation = Quaternion.Lerp(characterModel.transform.rotation, Quaternion.Euler(0, -18, 0),
-                    //     Time.deltaTime * turnSpeed);
-                    
+                    childRotationObject.transform.rotation = Quaternion.Lerp(childRotationObject.transform.rotation,
+                        Quaternion.Euler(0, -18, 0),
+                        Time.deltaTime * turnSpeed);
                 }
                 else if (transform.position.x == _lastTransform.x)
                 {
                     //midle
                     print("Midle");
-                    // characterModel.transform.rotation = Quaternion.Lerp(characterModel.transform.rotation, Quaternion.Euler(0, 0, 0),
-                    //     Time.deltaTime * turnSpeed);
-                    //
+                    childRotationObject.transform.rotation = Quaternion.Lerp(childRotationObject.transform.rotation,
+                        Quaternion.Euler(0, 0, 0),
+                        Time.deltaTime * turnSpeed);
                 }
                 else
                 {
-                    // characterModel.transform.rotation = Quaternion.Lerp(characterModel.transform.rotation, Quaternion.Euler(0, 0, 0),
-                    //     Time.deltaTime * turnSpeed);
-                    
+                    childRotationObject.transform.rotation = Quaternion.Lerp(childRotationObject.transform.rotation,
+                        Quaternion.Euler(0, 0, 0),
+                        Time.deltaTime * turnSpeed);
                 }
             }
             else
             {
+                childRotationObject.transform.rotation = Quaternion.Lerp(childRotationObject.transform.rotation,
+                    Quaternion.Euler(0, 0, 0),
+                    Time.deltaTime * turnSpeed);
+                
             }
         }
     }
