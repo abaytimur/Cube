@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5443891279459723678, guid: 89e43d7d486334cb19284cae936b2b17, type: 3}
       propertyPath: totalRoadCount
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89e43d7d486334cb19284cae936b2b17, type: 3}
