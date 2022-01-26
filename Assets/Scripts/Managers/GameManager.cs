@@ -34,44 +34,50 @@ namespace Managers
             Cursor.lockState = CursorLockMode.Confined;
 #endif
         }
-        
+
         public void OnLevelStart()
         {
             print("Level Started");
-            
+
             LevelStart?.Invoke();
         }
 
         public void OnLevelFail()
         {
             print("Level Failed");
-            
+
             LevelFail?.Invoke();
         }
 
         public void OnLevelSuccess()
         {
             print("Level Success");
-            
+
             LevelSuccess?.Invoke();
         }
-        
+
         public void RestartLevel()
         {
             OnLevelRestart();
+            
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void NextLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+           
+            var temporaryInt = PlayerPrefs.GetInt("LevelIndex");
+            PlayerPrefs.SetInt("LevelIndex", temporaryInt + 1);
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         protected virtual void OnLevelRestart()
         {
             print("Level Restart");
-            
+
             LevelRestart?.Invoke();
         }
+
     }
 }

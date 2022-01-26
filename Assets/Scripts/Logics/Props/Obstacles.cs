@@ -14,6 +14,9 @@ namespace Logics.Props
 
         private float _initialCharacterMovementSpeed;
         private float _halvedCharacterMovementSpeed;
+
+      
+        
         private void Awake()
         {
             _camera = Camera.main;
@@ -29,8 +32,12 @@ namespace Logics.Props
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                UiManager.Instance.HearthSpawner.DecreaseHearths();
-                StartCoroutine(SlowCharacter(other.gameObject.GetComponent<PlayerController>()));
+                var temporaryPlayerShield = other.GetComponent<PlayerController>().Shield;
+                if (!temporaryPlayerShield.Shielded)
+                {
+                    UiManager.Instance.HearthSpawner.DecreaseHearths();
+                    StartCoroutine(SlowCharacter(other.gameObject.GetComponent<PlayerController>()));
+                }
             }
         }
         

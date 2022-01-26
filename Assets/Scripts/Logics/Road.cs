@@ -54,14 +54,29 @@ namespace Logics
 
         private void SpawnRandomProps()
         {
-            if (Random.Range(0, 1f) <= 0.6f)
+            if (Random.Range(0, 1f) <= 0.4f)
             {
                 SpawnDiamonds();
             }
-            else
+            else if (Random.Range(0, 1f) <= 0.6f)
+            {
+                SpawnShields();
+            }
             {
                 SpawnObstacles();
             }
+        }
+
+        private void SpawnShields()
+        {
+            var tempObject = ObjectPooler.Instance.SpawnPropsFromPool(Extensions.ShieldName, new Vector3(
+                    Random.Range(-Extensions.ObstacleXOffset, Extensions.ObstacleXOffset),
+                    0,
+                    Random.Range(Extensions.ObstacleZMinOffset, Extensions.ObstacleZMaxOffset)),
+                Quaternion.Euler(0, 90, 0),
+                propSpawnTransform);
+
+            tempObject.transform.parent = null;
         }
 
         private void SpawnObstacles()

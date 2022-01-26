@@ -10,6 +10,7 @@ namespace Utilities
         public const string DiamondAlternativeName = "Diamond Alternative";
         public const string DiamondPayName = "Diamond Pay";
         public const string DiamondAlternativePayName = "Diamond Alternative Pay";
+        public const string ShieldName = "Shield";
 
         public const float ObstacleXOffset = 1f;
         public const float ObstacleZMaxOffset = -0.7f;

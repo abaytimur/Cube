@@ -51,7 +51,7 @@ namespace Logics.Props
                 _temporaryTag = Extensions.DiamondAlternativePayName;
             }
             var temporaryObject =
-                ObjectPooler.Instance.SpawnFromPool(_temporaryTag, transform.position, quaternion.identity);
+                ObjectPooler.Instance.SpawnFromPool(_temporaryTag, transform.position, Quaternion.identity);
 
             temporaryObject.transform.parent = null;
             _parentRigidbody.gameObject.SetActive(false);

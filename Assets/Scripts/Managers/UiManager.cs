@@ -29,6 +29,8 @@ namespace Managers
        [SerializeField] private HearthSpawner hearthSpawner;
         public HearthSpawner HearthSpawner => hearthSpawner;
 
+        private int _levelIndex;
+
         private void Awake()
         {
             if (_instance == null)
@@ -55,9 +57,12 @@ namespace Managers
             levelStartCanvas.SetActive(true);
             gameplayGoldCoinBox.SetActive(false);
 
-            levelNumberText.GetComponent<TextMeshProUGUI>().text =
-                $"LEVEL {SceneManager.GetActiveScene().buildIndex + 1}";
+            _levelIndex = PlayerPrefs.GetInt("LevelIndex");
+            
+            levelNumberText.GetComponent<TextMeshProUGUI>().text = $"LEVEL {_levelIndex+1}";
             _gameplayGoldCoinAmount.text = "0";
+            
+            
         }
 
         private void OnDestroy()

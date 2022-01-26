@@ -25,6 +25,9 @@ namespace Controllers
        
         private Gold _gold;
         public Gold Gold => _gold;
+
+        [SerializeField] private Shield _shield;
+        public Shield Shield => _shield;
         
         private void Awake()
         {
